@@ -1,0 +1,88 @@
+---
+title: "Exploratory Analysis"
+output: html_document
+date: "2022-11-20"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Acerca del Dataset
+Bay Area Bike Share permite viajes en bicicleta rápidos, fáciles y asequibles por el área de la bahía de San Francisco. Realizan publicaciones periódicas de datos abiertos (este conjunto de datos es una versión transformada de los datos de este enlace), además de mantener una API en tiempo real. 
+
+
+## Station 
+Contiene datos que representan una estación donde los usuarios pueden recoger o devolver bicicletas.
+```{r station_head }
+station <- read.csv(file = 'Datos Proyecto Modulo 5/station.csv',header = TRUE, sep = ',')
+head(station)
+
+
+```
+
+```{r station_summary }
+summary(station)
+```
+```{r station_missing_data}
+sapply(station, function(x) sum(is.na(x)))
+
+
+```
+## Status
+
+Datos sobre el número de bicicletas y muelles disponibles para la estación y minuto dados.
+```{r status_head }
+status <- read.csv(file = 'Datos Proyecto Modulo 5/status.csv',header = TRUE, sep = ',')
+head(status)
+
+
+```
+
+```{r status_summary }
+summary(status)
+```
+```{r status_missing_data}
+sapply(status, function(x) sum(is.na(x)))
+```
+## Trips
+Datos sobre viajes individuales en bicicleta
+
+
+```{r Trips_head }
+trips <- read.csv(file = 'Datos Proyecto Modulo 5/trip.csv',header = TRUE, sep = ',')
+head(trips)
+
+
+```
+
+```{r trips_summary }
+summary(trips)
+```
+```{r trips_missing_data}
+sapply(trips, function(x) sum(is.na(x)))
+```
+## Weather
+Datos sobre el clima en un día específico para ciertos códigos postales
+
+```{r weather_head }
+weather <- read.csv(file = 'Datos Proyecto Modulo 5/weather.csv',header = TRUE, sep = ',')
+head(weather)
+
+
+```
+
+```{r weather_summary }
+summary(weather)
+```
+```{r weather_missing_data}
+sapply(weather, function(x) sum(is.na(x)))
+```
+
+
+
+```{r weather_deleteNa}
+weather<- na.omit(weather)
+sapply(weather, function(x) sum(is.na(x)))
+```
+
